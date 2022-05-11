@@ -1,0 +1,347 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <details>
+      <summary>自分パネル</summary>
+      <div class="atkPanel"></div>
+    </details>
+    <details>
+      <summary>相手パネル</summary>
+      <div class="defPanel"></div>
+    </details>
+    <div>自分</div>
+    <div class="atkMember"></div>
+    <div>相手</div>
+    <div class="defMember"></div>
+    <div>
+      コメント
+      <input type="text" class="コメント" style="width: 500px" />
+    </div>
+    <div>
+      <button class="search">検索</button>
+      <button class="print">登録用リンク生成</button>
+    </div>
+    <div class="output"></div>
+    <datalist id="characters">
+      <option value="リマ" data-icon="92888_i" />
+      <option value="ミヤコ" data-icon="92882_i" />
+      <option value="クウカ" data-icon="92881_i" />
+      <option value="ジュン" data-icon="93640_i" />
+      <option value="ムイミ（ニューイヤー）" data-icon="249276_i" />
+      <option value="クウカ（オーエド）" data-icon="149184_i" />
+      <option value="カオリ" data-icon="92883_i" />
+      <option value="サレン（クリスマス）" data-icon="247343_i" />
+      <option value="ツムギ（ハロウィン）" data-icon="230620_i" />
+      <option value="レイ（ニューイヤー）" data-icon="136267_i" />
+      <option value="リン（デレマス）" data-icon="190943_i" />
+      <option value="ペコリーヌ" data-icon="92887_i" />
+      <option value="ペコリーヌ（プリンセス）" data-icon="186770_i" />
+      <option value="ルカ" data-icon="94468_i" />
+      <option value="コッコロ（ニューイヤー）" data-icon="183076_i" />
+      <option value="ノゾミ" data-icon="92870_i" />
+      <option value="ムイミ" data-icon="142756_i" />
+      <option value="マコト" data-icon="92872_i" />
+      <option value="カヤ" data-icon="175800_i" />
+      <option value="ヒヨリ（ニューイヤー）" data-icon="138812_i" />
+      <option value="ニノン（オーエド）" data-icon="150884_i" />
+      <option value="アキノ" data-icon="92871_i" />
+      <option value="マコト（サマー）" data-icon="160388_i" />
+      <option value="ジュン（サマー）" data-icon="222717_i" />
+      <option value="マツリ" data-icon="94460_i" />
+      <option value="クロエ" data-icon="166637_i" />
+      <option value="エリコ（バレンタイン）" data-icon="141210_i" />
+      <option value="アヤネ（クリスマス）" data-icon="134531_i" />
+      <option value="ルカ（サマー）" data-icon="213088_i" />
+      <option value="ツムギ" data-icon="94456_i" />
+      <option value="イノリ" data-icon="177169_i" />
+      <option value="ヒヨリ（プリンセス）" data-icon="249271_i" />
+      <option value="ヒヨリ" data-icon="92891_i" />
+      <option value="ミソギ" data-icon="92892_i" />
+      <option value="アヤネ" data-icon="94464_i" />
+      <option value="ミソギ（ハロウィン）" data-icon="170555_i" />
+      <option value="タマキ" data-icon="92885_i" />
+      <option value="トモ" data-icon="94461_i" />
+      <option value="チエル" data-icon="170425_i" />
+      <option value="タマキ（サマー）" data-icon="114502_i" />
+      <option value="エリコ" data-icon="92884_i" />
+      <option value="ペコリーヌ（サマー）" data-icon="109993_i" />
+      <option value="クルミ" data-icon="92889_i" />
+      <option value="ジータ" data-icon="92875_i" />
+      <option value="レイ" data-icon="92890_i" />
+      <option value="イリヤ（クリスマス）" data-icon="180708_i" />
+      <option value="アンナ（サマー）" data-icon="212646_i" />
+      <option value="クリスティーナ（クリスマス）" data-icon="178680_i" />
+      <option value="シズル" data-icon="92873_i" />
+      <option value="クリスティーナ" data-icon="94463_i" />
+      <option value="クルミ（クリスマス）" data-icon="132419_i" />
+      <option value="ミミ" data-icon="92898_i" />
+      <option value="シノブ" data-icon="92899_i" />
+      <option value="ミミ（ハロウィン）" data-icon="172697_i" />
+      <option value="ウヅキ（デレマス）" data-icon="188928_i" />
+      <option value="シズル（バレンタイン）" data-icon="141208_i" />
+      <option value="マヒル（レンジャー）" data-icon="203217_i" />
+      <option value="マヒル" data-icon="92900_i" />
+      <option value="ユカリ" data-icon="92904_i" />
+      <option value="モニカ" data-icon="92896_i" />
+      <option value="ニノン" data-icon="92895_i" />
+      <option value="ノゾミ（クリスマス）" data-icon="178679_i" />
+      <option value="ミフユ" data-icon="92901_i" />
+      <option value="リン（レンジャー）" data-icon="200838_i" />
+      <option value="イリヤ" data-icon="94459_i" />
+      <option value="カオリ（サマー）" data-icon="160387_i" />
+      <option value="サレン" data-icon="92893_i" />
+      <option value="アンナ" data-icon="92894_i" />
+      <option value="シノブ（ハロウィン）" data-icon="120761_i" />
+      <option value="ナナカ（サマー）" data-icon="214825_i" />
+      <option value="ミフユ（サマー）" data-icon="114504_i" />
+      <option value="コッコロ" data-icon="92903_i" />
+      <option value="アユミ（ワンダー）" data-icon="206761_i" />
+      <option value="アユミ" data-icon="94469_i" />
+      <option value="グレア" data-icon="147234_i" />
+      <option value="アカリ（エンジェル）" data-icon="226289_i" />
+      <option value="ヨリ（エンジェル）" data-icon="229351_i" />
+      <option value="コッコロ（サマー）" data-icon="109994_i" />
+      <option value="レム" data-icon="152682_i" />
+      <option value="ラム" data-icon="152681_i" />
+      <option value="リン" data-icon="94466_i" />
+      <option value="コッコロ（プリンセス）" data-icon="206754_i" />
+      <option value="ラビリスタ" data-icon="94455_i" />
+      <option value="ミツキ" data-icon="92902_i" />
+      <option value="ハツネ（サマー）" data-icon="218993_i" />
+      <option value="アカリ" data-icon="92897_i" />
+      <option value="ヨリ" data-icon="92905_i" />
+      <option value="サレン（サマー）" data-icon="158866_i" />
+      <option value="ミヤコ（ハロウィン）" data-icon="120762_i" />
+      <option value="アリサ" data-icon="93551_i" />
+      <option value="アン" data-icon="146934_i" />
+      <option value="ルゥ" data-icon="146808_i" />
+      <option value="ネネカ" data-icon="164532_i" />
+      <option value="アオイ（編入生）" data-icon="164701_i" />
+      <option value="キャル（ニューイヤー）" data-icon="182031_i" />
+      <option value="ミオ（デレマス）" data-icon="188929_i" />
+      <option value="ミサト（サマー）" data-icon="218997_i" />
+      <option value="リノ" data-icon="92906_i" />
+      <option value="スズナ" data-icon="92911_i" />
+      <option value="スズナ（サマー）" data-icon="156383_i" />
+      <option value="シオリ" data-icon="92909_i" />
+      <option value="シオリ（マジカル）" data-icon="185203_i" />
+      <option value="イオ" data-icon="92920_i" />
+      <option value="イオ（サマー）" data-icon="156384_i" />
+      <option value="スズメ" data-icon="92916_i" />
+      <option value="スズメ（ニューイヤー）" data-icon="182033_i" />
+      <option value="エミリア" data-icon="154086_i" />
+      <option value="カスミ" data-icon="94465_i" />
+      <option value="カスミ（マジカル）" data-icon="185200_i" />
+      <option value="リノ（ワンダー）" data-icon="207214_i" />
+      <option value="ミサト" data-icon="94458_i" />
+      <option value="ナナカ" data-icon="94467_i" />
+      <option value="ユイ（ニューイヤー）" data-icon="136547_i" />
+      <option value="キャル" data-icon="92913_i" />
+      <option value="ハツネ" data-icon="92908_i" />
+      <option value="ミサキ" data-icon="92915_i" />
+      <option value="ルナ" data-icon="174166_i" />
+      <option value="ユイ（プリンセス）" data-icon="212645_i" />
+      <option value="チカ（クリスマス）" data-icon="132396_i" />
+      <option value="スズメ（サマー）" data-icon="112868_i" />
+      <option value="キャル（サマー）" data-icon="114528_i" />
+      <option value="アオイ" data-icon="92917_i" />
+      <option value="チカ" data-icon="92912_i" />
+      <option value="マホ（サマー）" data-icon="162001_i" />
+      <option value="マホ" data-icon="92907_i" />
+      <option value="ユイ" data-icon="92914_i" />
+      <option value="ユキ" data-icon="92910_i" />
+      <option value="ユニ" data-icon="170426_i" />
+      <option value="キョウカ" data-icon="94457_i" />
+      <option value="ミサキ（ハロウィン）" data-icon="123926_i" />
+      <option value="キョウカ（ハロウィン）" data-icon="170554_i" />
+    </datalist>
+  </body>
+  <script>
+    var setAtkChara, setDefChara;
+    $(function () {
+      var atkSet = new Set();
+      var defSet = new Set();
+      var charaMap = {};
+      var charaNameList = [];
+      var reverseCharaNameList = [];
+      var battleList = [];
+      setAtkChara = function (charaName) {
+        var member = [];
+        if (atkSet.has(charaName)) {
+          atkSet.delete(charaName);
+        } else {
+          if (atkSet.size < 5) {
+            atkSet.add(charaName);
+          }
+        }
+        reverseCharaNameList.forEach((_charaName) => {
+          if (atkSet.has(_charaName)) {
+            member.push(_charaName);
+          }
+        });
+        var dataHTML = member
+          .map((_charaName) => {
+            return (
+              '<img src="https://img.gamewith.jp/article_tools/pricone-re/gacha/' +
+              charaMap[_charaName] +
+              '.png" width="50px" height="50px" data-name="' +
+              _charaName +
+              '" onclick="setAtkChara(\'' +
+              _charaName +
+              "')\"/>"
+            );
+          })
+          .join("");
+        $(".atkMember").html(dataHTML);
+      };
+      setDefChara = function (charaName) {
+        var member = [];
+        if (defSet.has(charaName)) {
+          defSet.delete(charaName);
+        } else {
+          if (defSet.size < 5) {
+            defSet.add(charaName);
+          }
+        }
+        reverseCharaNameList.forEach((_charaName) => {
+          if (defSet.has(_charaName)) {
+            member.push(_charaName);
+          }
+        });
+        var dataHTML = member
+          .map((_charaName) => {
+            return (
+              '<img src="https://img.gamewith.jp/article_tools/pricone-re/gacha/' +
+              charaMap[_charaName] +
+              '.png" width="50px" height="50px" data-name="' +
+              _charaName +
+              '" onclick="setDefChara(\'' +
+              _charaName +
+              "')\"/>"
+            );
+          })
+          .join("");
+        $(".defMember").html(dataHTML);
+      };
+      $("datalist option").each((idx, elm) => {
+        charaNameList.push(elm.value);
+        reverseCharaNameList.push(elm.value);
+        charaMap[elm.value] = $(elm).data("icon");
+      });
+      reverseCharaNameList.reverse();
+      var atkPanelHTML = charaNameList
+        .map((_charaName) => {
+          return (
+            '<img src="https://img.gamewith.jp/article_tools/pricone-re/gacha/' +
+            charaMap[_charaName] +
+            '.png" width="50px" height="50px" data-name="' +
+            _charaName +
+            '" onclick="setAtkChara(\'' +
+            _charaName +
+            "')\"/>"
+          );
+        })
+        .join("");
+      var defPanelHTML = charaNameList
+        .map((_charaName) => {
+          return (
+            '<img src="https://img.gamewith.jp/article_tools/pricone-re/gacha/' +
+            charaMap[_charaName] +
+            '.png" width="50px" height="50px" data-name="' +
+            _charaName +
+            '" onclick="setDefChara(\'' +
+            _charaName +
+            "')\"/>"
+          );
+        })
+        .join("");
+      $(".atkPanel").html(atkPanelHTML);
+      $(".defPanel").html(defPanelHTML);
+      $.get(
+        "https://script.google.com/macros/s/AKfycbwRyVOcKW22I1hEfnrAPSlI2BPQwbgFjZEwBDBzzjVJsM6O7FJm/exec",
+        function (results) {
+          battleList = results.map(function (result) {
+            return {
+              自分: result["自分"].split(","),
+              相手: result["相手"].split(","),
+              コメント: result["コメント"],
+            };
+          });
+          battleList.forEach(function (match) {
+            $("<div></div>", {
+              class: "対戦結果 " + match["相手"].join(" "),
+              html:
+                "<span>" +
+                match["自分"]
+                  .map(function (charaName) {
+                    return (
+                      '<img src="https://img.gamewith.jp/article_tools/pricone-re/gacha/' +
+                      charaMap[charaName] +
+                      '.png" width="50px" height="50px" data-name="' +
+                      charaName +
+                      '" onclick="setAtkChara(\'' +
+                      charaName +
+                      "')\"/>"
+                    );
+                  })
+                  .join("") +
+                "</span>" +
+                "VS" +
+                "<span>" +
+                match["相手"]
+                  .map(function (charaName) {
+                    return (
+                      '<img src="https://img.gamewith.jp/article_tools/pricone-re/gacha/' +
+                      charaMap[charaName] +
+                      '.png" width="50px" height="50px" data-name="' +
+                      charaName +
+                      '" onclick="setDefChara(\'' +
+                      charaName +
+                      "')\"/>"
+                    );
+                  })
+                  .join("") +
+                "</span>" +
+                "<div>" +
+                match["コメント"] +
+                "</div>",
+            }).appendTo("body");
+          });
+        }
+      );
+    });
+    $("button.search").on("click", function () {
+      var searchClass = $(".defMember img")
+        .map((idx, elm) => $(elm).data("name"))
+        .get()
+        .join(".");
+      $("div.対戦結果").show();
+      if (searchClass) {
+        $("div.対戦結果")
+          .not("." + searchClass)
+          .hide();
+      }
+    });
+    $("button.print").on("click", function () {
+      var linkHTML =
+        '<a href="' +
+        "https://script.google.com/macros/s/AKfycbwRyVOcKW22I1hEfnrAPSlI2BPQwbgFjZEwBDBzzjVJsM6O7FJm/exec?" +
+        "自分=" +
+        $(".atkMember img")
+          .map((idx, elm) => $(elm).data("name"))
+          .get()
+          .toString() +
+        "&相手=" +
+        $(".defMember img")
+          .map((idx, elm) => $(elm).data("name"))
+          .get()
+          .toString() +
+        "&コメント=" +
+        $("input.コメント").val() +
+        '">登録用リンク</a>';
+      $(".output").html(linkHTML);
+    });
+  </script>
+</html>
