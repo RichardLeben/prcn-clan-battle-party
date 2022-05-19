@@ -5,28 +5,29 @@ const concatArrays = (...arrays) => {
 }
 
 const getDuplicateValues = (...valuesArray) => {
-  return concatArrays(valuesArray).filter((val, idx, _valuesArray) => {
+  return concatArrays(...valuesArray).filter((val, idx, _valuesArray) => {
     return _valuesArray.indexOf(val) === idx && idx !== _valuesArray.lastIndexOf(val);
   });
 }
 
 const getCandidateParties = (characters, duplicateCharacters) => {
-  duplicateCharacters.map((dupChara) => {
+  const supportCandidateCharacters = getDuplicateValues(characters, duplicateCharacters);
+  return supportCandidateCharacters.map((dupChara) => {
     return characters.filter((chara) => chara !== dupChara);
   })
 }
 
-
-
-const result = [];
+const candidatePartySets = [];
 const party1 = [1,2,3,4,5];
 const party2 = [1,3,6,7,8];
 const party3 = [2,3,9,10,11];
+const duplicateCharacters = getDuplicateValues(party1, party2, party3);
 
-party1.forEach(v1 => {
-  party2.forEach(v2 => {
-    party3.forEach(v3 => {
-      result.push([v1, v2, v3]);
+getCandidateParties(party1, duplicateCharacters).forEach(candidateParty1 => {
+  getCandidateParties(party2, duplicateCharacters).forEach(candidateParty2 => {
+    getCandidateParties(party3, duplicateCharacters).forEach(candidateParty3 => {
+      candidatePartySets.push([candidateParty1, candidateParty2, candidateParty3]);
     });
   });
 });
+const result = candidatePartySets.filter((candidatePartySet)=> getDuplicateValues(...candidatePartySet).length === 0)
