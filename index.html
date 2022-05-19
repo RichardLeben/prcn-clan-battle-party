@@ -1,28 +1,56 @@
 <html>
-  <body>
-    <div class="wrapper" style="position: relative;width: fit-content;height: fit-content;">
-      <img src="icons/クウカ.png"/ width="500" height="500">
-      <select style="position: absolute;top: 0;left: 0; margin: 0;color: white;background: silver;border: none;appearance: none;font-weight: 800;font-size: 12px;padding: 5px 10px;">
-        <option value="" disabled selected hidden>RANKを選択</option>
-        <option value="R24">R24</option>
-        <option value="R25">R25</option>
-      </select>
-      <select style="position: absolute;bottom: 0;left: 0; margin: 0;color: white;background: orange;border: none;appearance: none;font-weight: 800;font-size: 12px;padding: 5px 10px;">
-        <option value="" disabled selected hidden>★を選択</option>
-        <option value="1">★1</option>
-        <option value="2">★2</option>
-        <option value="3">★3</option>
-        <option value="4">★4</option>
-        <option value="5">★5</option>
-        <option value="6">★6</option>
-      </select>
-      <select style="position: absolute;bottom: 0;right: 0; margin: 0;color: white;background: blueviolet;border: none;appearance: none;font-weight: 800;font-size: 12px;padding: 5px 10px;">
-        <option value="" selected>専用装備のLvを選択</option>
-        <option value="0">なし</option>
-        <option value="1">1</option>
-        <option value="30">30</option>
-        <option value="240">240</option>
-      </select>
-    </div>
-  </body>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="character.js"></script>
+</head>
+
+<body>
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <div style="display: flex;">
+            <select>
+              <option value="" disabled selected hidden>キャラを選択</option>
+              <option value="R24">R24</option>
+              <option value="R25">R25</option>
+            </select>
+            <div class="wrapper" style="position: relative;width: fit-content;height: fit-content;">
+              <img src="icons/クウカ.png" / width="500" height="500">
+              <select
+                style="position: absolute;top: 0;left: 0; margin: 0;color: white;background: silver;border: none;appearance: none;font-weight: 800;font-size: 12px;padding: 5px 10px;">
+                <option value="" disabled selected hidden>RANKを選択</option>
+                <option value="R24">R24</option>
+                <option value="R25">R25</option>
+              </select>
+              <select
+                style="position: absolute;bottom: 0;left: 0; margin: 0;color: white;background: orange;border: none;appearance: none;font-weight: 800;font-size: 12px;padding: 5px 10px;">
+                <option value="" disabled selected hidden>★を選択</option>
+                <option value="1">★1</option>
+                <option value="2">★2</option>
+                <option value="3">★3</option>
+                <option value="4">★4</option>
+                <option value="5">★5</option>
+                <option value="6">★6</option>
+              </select>
+              <select
+                style="position: absolute;bottom: 0;right: 0; margin: 0;color: white;background: blueviolet;border: none;appearance: none;font-weight: 800;font-size: 12px;padding: 5px 10px;">
+                <option value="" selected>専用装備のLvを選択</option>
+                <option value="0">なし</option>
+                <option value="1">1</option>
+                <option value="30">30</option>
+                <option value="240">240</option>
+              </select>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <script>
+    console.log(getCharacterDataList());
+  </script>
+</body>
+
 </html>
