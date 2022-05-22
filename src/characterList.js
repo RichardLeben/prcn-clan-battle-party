@@ -1,4 +1,4 @@
-const characters = [
+const characterNames = [
   "リマ",
   "ミヤコ",
   "クウカ",
