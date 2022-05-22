@@ -3,7 +3,7 @@ const partyMap = {};
 
 const initializePanel = () => {
   const html = characterNames.map(
-    (characterName) => `<img src="icons/${characterName}.png" onclick="clickChara(${characterName})"`
+    (characterName) => `<img src="icons/${characterName}.png" onclick="clickChara(${characterName})" />`
   ).join('')
   jQuery('#panel').html(html);
 }
