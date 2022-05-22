@@ -3,7 +3,7 @@ const partyMap = {};
 
 const initializePanel = () => {
   const html = characterNames.map(
-    (characterName) => `<img src="icons/${characterName}.png" onclick="clickChara(${characterName})" />`
+    (characterName) => `<img src="icons/${characterName}.png" onclick="clickChara("${characterName}")" />`
   ).join('')
   jQuery('#panel').html(html);
 }
@@ -27,7 +27,7 @@ const addParty = () => {
     `<div id="${partyId}" class="party">
       <input type="radio" name="target" value="${partyId}" onselect="selectParty(${partyId})"/>
       <span class="party"></span>
-      <button onclick="removeParty(${partyId});">-</button>
+      <button onclick="removeParty("${partyId}");">-</button>
     </div>`
   );
 }
@@ -60,7 +60,7 @@ const addChara = (characterName) => {
   const newCharacters = characterNames.filter((character) => tempCharacters.includes(character));
   partyMap[partyId].characters = newCharacters;
   jQuery(`#${partyId} .party`).html(
-    newCharacters.map((character) => `<img src="icons/${character}.png" width="50" height="50" onclick="removeChara(${character})"></img>`).join("")
+    newCharacters.map((character) => `<img src="icons/${character}.png" width="50" height="50" onclick="setSupportChara("${character}")"></img>`).join("")
   )
   jQuery(`#${characterName}`).css('opacity', '1.0');
 }
@@ -74,7 +74,7 @@ const removeChara = (characterName) => {
     partyMap[partyId].support = '';
   }
   jQuery(`#${partyId} .party`).html(
-    newCharacters.map((character) => `<img src="icons/${character}.png" width="50" height="50" onclick="removeChara(${character})"></img>`).join("")
+    newCharacters.map((character) => `<img src="icons/${character}.png" width="50" height="50" onclick="setSupportChara("${character}")"></img>`).join("")
   )
   jQuery(`#${characterName}`).css('opacity', '0.6');
 }
