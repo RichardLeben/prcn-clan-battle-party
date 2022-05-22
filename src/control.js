@@ -3,16 +3,18 @@ const partyMap = {};
 
 const initializePanel = () => {
   const html = characterNames.map(
-    (characterName) => `<img src="icons/${characterName}.png" onclick="clickChara("${characterName}")" />`
+    (characterName) => `<img id="${characterName}" class="character" src="icons/${characterName}.png" width="50" height="50" onclick="clickChara('${characterName}')" />`
   ).join('')
   jQuery('#panel').html(html);
+  jQuery('.character').css('opacity', '0.6');
 }
 
 const selectParty = (partyId) => {
+  selectedParty = partyId;
   jQuery('.party').css('background-color', 'transparent');
   jQuery(`#${partyId}`).css('background-color', 'yellow');
   jQuery('.character').css('opacity', '0.6');
-  partyMap[partyId].characters.forEach((character) => {
+  partyMap[selectedParty].characters.forEach((character) => {
     jQuery(`#${character}`).css('opacity', '1.0');
   });
 }
@@ -25,29 +27,31 @@ const addParty = () => {
   }
   jQuery("#party-list").append(
     `<div id="${partyId}" class="party">
-      <input type="radio" name="target" value="${partyId}" onselect="selectParty(${partyId})"/>
+      <input type="radio" name="target" value="${partyId}" onchange="selectParty('${partyId}')" />
       <span class="party"></span>
-      <button onclick="removeParty("${partyId}");">-</button>
+      <button onclick="removeParty('${partyId}')">-</button>
     </div>`
   );
+  return partyId;
 }
 
 const removeParty = (partyId) => {
   delete partyMap[partyId];
   jQuery(`#${partyId}`).remove();
+  jQuery('.character').css('opacity', '0.6');
 }
 
 const setSupportChara = (characterName) => {
-  const partyId = jQuery('input[name="target"]:checked').val();
-  if (partyMap[partyId].support !== characterName) {
-    partyMap[partyId].support = characterName;
+  if (partyMap[selectedParty].support !== characterName) {
+    partyMap[selectedParty].support = characterName;
+    
   } else {
-    partyMap[partyId].support = '';
+    partyMap[selectedParty].support = '';
   }
 }
 
 const clickChara = (charaterName) => {
-  if (partyMap[partyId].characters.includes(charaterName)) {
+  if (partyMap[selectedParty].characters.includes(charaterName)) {
     removeChara(charaterName);
   } else {
     addChara(charaterName);
@@ -55,26 +59,30 @@ const clickChara = (charaterName) => {
 } 
 
 const addChara = (characterName) => {
-  const partyId = jQuery('input[name="target"]:checked').val();
-  const tempCharacters = [...partyMap[partyId].characters, characterName];
-  const newCharacters = characterNames.filter((character) => tempCharacters.includes(character));
-  partyMap[partyId].characters = newCharacters;
-  jQuery(`#${partyId} .party`).html(
-    newCharacters.map((character) => `<img src="icons/${character}.png" width="50" height="50" onclick="setSupportChara("${character}")"></img>`).join("")
-  )
-  jQuery(`#${characterName}`).css('opacity', '1.0');
+  if (partyMap[selectedParty].characters.length < 5) {
+    const tempCharacters = [...partyMap[selectedParty].characters, characterName];
+    const newCharacters = characterNames.filter((character) => tempCharacters.includes(character)).reverse();
+    partyMap[selectedParty].characters = newCharacters;
+    jQuery(`#${selectedParty} .party`).html(
+      newCharacters.map(
+        (character) => `<img src="icons/${character}.png" width="50" height="50" onclick="setSupportChara('${character}')" />`
+      ).join('')
+    )
+    jQuery(`#${characterName}`).css('opacity', '1.0');
+  }
 }
 
 const removeChara = (characterName) => {
-  const partyId = jQuery('input[name="target"]:checked').val();
-  const tempCharacters = [...partyMap[partyId].characters].filter((character) => character !== characterName);
-  const newCharacters = characterNames.filter((character) => tempCharacters.includes(character));
-  partyMap[partyId].characters = newCharacters;
-  if (partyMap[partyId].support === characterName) {
-    partyMap[partyId].support = '';
+  const tempCharacters = [...partyMap[selectedParty].characters].filter((character) => character !== characterName);
+  const newCharacters = characterNames.filter((character) => tempCharacters.includes(character)).reverse();
+  partyMap[selectedParty].characters = newCharacters;
+  if (partyMap[selectedParty].support === characterName) {
+    partyMap[selectedParty].support = '';
   }
-  jQuery(`#${partyId} .party`).html(
-    newCharacters.map((character) => `<img src="icons/${character}.png" width="50" height="50" onclick="setSupportChara("${character}")"></img>`).join("")
+  jQuery(`#${selectedParty} .party`).html(
+    newCharacters.map(
+      (character) => `<img src="icons/${character}.png" width="50" height="50" onclick="setSupportChara('${character}')" />`
+    ).join('')
   )
   jQuery(`#${characterName}`).css('opacity', '0.6');
 }
